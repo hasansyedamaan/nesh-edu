@@ -1,2 +1,2 @@
-# neshedu
-A new age learning edtech platform
+# nesh-edu
+The new age edtech platform
