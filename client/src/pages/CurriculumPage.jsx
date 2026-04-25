@@ -4,8 +4,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const DEMO_COURSE = {
-  title: 'Artificial Intelligence & Machine Learning - FREE Demo',
-  shortDescription: 'Join our FREE demo session on AI/ML this Sunday! Get insights into course structure, learning approach, and real-world applications.',
+  title: 'Artificial Intelligence & Machine Learning (AI/ML) - FREE Demo',
+  shortDescription: 'Join our FREE demo session on AI/ML this Sunday, 26th April 2026. Get insights into the course structure, learning approach, and real-world applications of AI/ML.',
   category: 'AI/ML',
   level: 'Beginner',
   price: 0,

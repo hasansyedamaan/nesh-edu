@@ -5,14 +5,16 @@ import Footer from '../components/Footer';
 const GOOGLE_FORM_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLScgqu3_f10FERP0zew8QCreSQK_d39y4Pkj_9LM4c7oj_GTJw/viewform?usp=publish-editor';
 
 const DEMO_COURSE = {
-  title: 'Artificial Intelligence & Machine Learning - FREE Demo',
-  description: 'Join our FREE demo session on AI/ML! We will dive deep into our comprehensive curriculum architecture, discussing predictive analytics, neural network implementations, and the future of cognitive computing. Discover how NESHEDU empowers you to master these high-impact technologies.',
+  title: 'Artificial Intelligence & Machine Learning (AI/ML) - FREE Demo',
+  description: 'This session will give you a clear insight into the course structure, learning approach, and real-world applications of AI/ML. Additionally, Neshedu has established academic and industry connections with reputed organizations such as Amazon and NUSummit, providing learners with enhanced exposure, guidance, and future opportunities.',
   category: 'AI/ML',
   level: 'Beginner',
   price: 0,
   instructor: {
-    name: 'Dr. Alan Turing',
+    name: 'International faculty from Uzbekistan',
   },
+  date: 'Sunday, 26th April 2026',
+  mode: 'Online (link will be shared after registration)',
   rating: { average: 5.0 },
   enrollmentCount: 1420,
   modules: [
@@ -71,15 +73,22 @@ const DemoCoursePage = () => {
             </div>
             <h1 style={{ color:'white', fontSize:'clamp(1.8rem,3.5vw,2.6rem)', fontWeight:800,
               lineHeight:1.2, marginBottom:20 }}>{DEMO_COURSE.title}</h1>
-            <p style={{ color:'rgba(255,255,255,0.75)', fontSize:17, lineHeight:1.7, marginBottom:28, maxWidth:680 }}>
+            <p style={{ color:'rgba(255,255,255,0.75)', fontSize:17, lineHeight:1.7, marginBottom:24, maxWidth:680 }}>
               {DEMO_COURSE.description}
             </p>
+            <div style={{ background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.1)', padding:'20px', borderRadius:'16px', marginBottom:28, maxWidth:680 }}>
+              <h3 style={{ color:'white', fontSize:16, fontWeight:700, marginBottom:12 }}>🎯 Why Attend the Demo?</h3>
+              <ul style={{ color:'rgba(255,255,255,0.8)', fontSize:15, lineHeight:1.7, paddingLeft:20, margin:0 }}>
+                <li>Experience global-level teaching</li>
+                <li>Understand AI/ML fundamentals</li>
+                <li>Explore career opportunities in tech</li>
+                <li>Get details about full courses and benefits</li>
+              </ul>
+            </div>
             <div style={{ display:'flex', gap:28, flexWrap:'wrap' }}>
               {[
-                ['star', `${DEMO_COURSE.rating.average.toFixed(1)} rating`],
-                ['people', `${DEMO_COURSE.enrollmentCount} students`],
-                ['play_lesson', `${totalLessons} lessons`],
-                ['schedule', `${Math.round(totalDuration/60)}h ${totalDuration%60}m`],
+                ['event', DEMO_COURSE.date],
+                ['computer', DEMO_COURSE.mode]
               ].map(([icon, text]) => (
                 <div key={text} style={{ display:'flex', alignItems:'center', gap:8, color:'rgba(255,255,255,0.8)', fontSize:14, fontWeight:600 }}>
                   <span className="material-symbols-outlined" style={{ fontSize:18, color:'var(--primary-container)' }}>{icon}</span>
@@ -91,7 +100,7 @@ const DemoCoursePage = () => {
               <div style={{ width:40, height:40, borderRadius:'50%', background:'var(--primary-container)',
                 display:'flex', alignItems:'center', justifyContent:'center', fontWeight:800, fontSize:15,
                 color:'var(--on-primary-container)', overflow:'hidden' }}>
-                {DEMO_COURSE.instructor.name.charAt(0)}
+                <span className="material-symbols-outlined" style={{ fontSize: 20 }}>public</span>
               </div>
               <div>
                 <p style={{ color:'rgba(255,255,255,0.6)', fontSize:12, fontWeight:600 }}>Instructor</p>
