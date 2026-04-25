@@ -444,21 +444,6 @@ input, textarea, select { font-family: inherit; }
 .course-thumbnail { width:100%; aspect-ratio:16/9; object-fit:cover; background:var(--primary-container); }
 
 /* ── Responsive Layout Utilities ────────────────────────────── */
-.responsive-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 48px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.nav-links-container {
-  display: flex;
-  align-items: center;
-  gap: 56px;
-}
-
 .nav-links {
   display: flex;
   gap: 36px;
@@ -468,6 +453,24 @@ input, textarea, select { font-family: inherit; }
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.responsive-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 56px;
 }
 
 .hero-grid {
@@ -524,7 +527,7 @@ input, textarea, select { font-family: inherit; }
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 48px;
-    padding-top: 60px;
+    padding-top: 120px;
     text-align: center;
   }
   .hero-grid > div:first-child {
@@ -549,30 +552,41 @@ input, textarea, select { font-family: inherit; }
 @media (max-width: 768px) {
   .responsive-nav {
     padding: 16px 24px;
+    gap: 0;
   }
-  .nav-links {
-    display: none; /* Hide links on mobile */
+  .nav-menu {
+    display: none;
   }
-  .nav-links.mobile-open {
+  .nav-menu.mobile-open {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 70px;
+    top: 100%;
     left: 0;
     right: 0;
     background: var(--surface);
     padding: 24px;
     border-bottom: 1px solid var(--outline-variant);
     box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    gap: 24px;
+    align-items: stretch;
   }
-  .nav-links-container {
-    gap: 20px;
+  .nav-menu.mobile-open .nav-links {
+    flex-direction: column;
+    gap: 16px;
   }
-  .nav-actions {
-    gap: 12px;
+  .nav-menu.mobile-open .nav-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .nav-menu.mobile-open .magnetic-btn {
+    width: 100%;
+    text-align: center;
   }
   .mobile-menu-btn {
     display: block;
+    margin-left: auto;
   }
   section {
     padding-left: 24px !important;

@@ -30,49 +30,44 @@ const Navbar = () => {
   return (
     <header style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
-      background: scrolled || !isLanding ? 'rgba(255,255,255,0.80)' : 'transparent',
-      backdropFilter: scrolled || !isLanding ? 'blur(25px)' : 'none',
-      borderBottom: scrolled || !isLanding ? '1px solid rgba(255,255,255,0.4)' : 'none',
+      background: scrolled || !isLanding || mobileMenuOpen ? 'rgba(255,255,255,0.80)' : 'transparent',
+      backdropFilter: scrolled || !isLanding || mobileMenuOpen ? 'blur(25px)' : 'none',
+      borderBottom: scrolled || !isLanding || mobileMenuOpen ? '1px solid rgba(255,255,255,0.4)' : 'none',
       boxShadow: scrolled ? '0 4px 30px rgba(28,98,81,0.06)' : 'none',
       transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)'
     }}>
       <nav className="responsive-nav">
         {/* Logo */}
-        <div className="nav-links-container">
-          <Link to="/" style={{ fontSize:28, fontWeight:800, letterSpacing:'-0.04em',
-            color: isLanding && !scrolled ? 'white' : 'var(--on-surface)' }}>
-            NESHEDU
-          </Link>
-          <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+        <Link to="/" style={{ fontSize:28, fontWeight:800, letterSpacing:'-0.04em',
+          color: isLanding && !scrolled && !mobileMenuOpen ? 'white' : 'var(--on-surface)' }}>
+          NESHEDU
+        </Link>
+        
+        <div className={`nav-menu ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+          <div className="nav-links">
             {[['Home', '/'], ['Curriculum', '/curriculum'], ['Analytics', '/analytics'], ['Mentors', '/mentors'], ['Library', '/library']].map(([label, href]) => {
               const disabled = ['/analytics', '/library'].includes(href);
               return (
                 <Link key={label} to={disabled ? '/welcome' : href} style={{
-                  color: isLanding && !scrolled ? 'rgba(255,255,255,0.8)' : 'var(--on-surface-variant)',
+                  color: isLanding && !scrolled && !mobileMenuOpen ? 'rgba(255,255,255,0.8)' : 'var(--on-surface-variant)',
                   fontWeight: 600, fontSize:15,
                   borderBottom: location.pathname === href ? '2px solid var(--primary-container)' : '2px solid transparent',
                   paddingBottom: 4, transition: 'color 0.3s'
                 }}
-                onMouseEnter={e => e.target.style.color = isLanding && !scrolled ? 'white' : 'var(--primary)'}
-                onMouseLeave={e => e.target.style.color = isLanding && !scrolled ? 'rgba(255,255,255,0.8)' : 'var(--on-surface-variant)'}>
+                onMouseEnter={e => e.target.style.color = isLanding && !scrolled && !mobileMenuOpen ? 'white' : 'var(--primary)'}
+                onMouseLeave={e => e.target.style.color = isLanding && !scrolled && !mobileMenuOpen ? 'rgba(255,255,255,0.8)' : 'var(--on-surface-variant)'}>
                   {label}
                 </Link>
               );
             })}
           </div>
-        </div>
 
         {/* Actions */}
         <div className="nav-actions">
-          <button className="mobile-menu-btn material-symbols-outlined" 
-            style={{ color: isLanding && !scrolled ? 'rgba(255,255,255,0.7)' : 'var(--on-surface)' }}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? 'close' : 'menu'}
-          </button>
           {user ? (
             <>
               <span className="material-symbols-outlined"
-                style={{ color: isLanding && !scrolled ? 'rgba(255,255,255,0.7)' : 'var(--outline)', cursor:'pointer', fontSize:22 }}>
+                style={{ color: isLanding && !scrolled && !mobileMenuOpen ? 'rgba(255,255,255,0.7)' : 'var(--outline)', cursor:'pointer', fontSize:22 }}>
                 notifications
               </span>
               <div style={{ position:'relative' }}>
@@ -89,11 +84,11 @@ const Navbar = () => {
                       : user.name.charAt(0).toUpperCase()}
                   </div>
                   <span style={{ fontWeight:600, fontSize:14,
-                    color: isLanding && !scrolled ? 'white' : 'var(--on-surface)' }}>
+                    color: isLanding && !scrolled && !mobileMenuOpen ? 'white' : 'var(--on-surface)' }}>
                     {user.name.split(' ')[0]}
                   </span>
                   <span className="material-symbols-outlined" style={{ fontSize:18,
-                    color: isLanding && !scrolled ? 'rgba(255,255,255,0.7)' : 'var(--outline)' }}>
+                    color: isLanding && !scrolled && !mobileMenuOpen ? 'rgba(255,255,255,0.7)' : 'var(--outline)' }}>
                     expand_more
                   </span>
                 </button>
@@ -139,7 +134,7 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/welcome" style={{ fontWeight:700, fontSize:14,
-                color: isLanding && !scrolled ? 'rgba(255,255,255,0.85)' : 'var(--on-surface-variant)',
+                color: isLanding && !scrolled && !mobileMenuOpen ? 'rgba(255,255,255,0.85)' : 'var(--on-surface-variant)',
                 transition:'color 0.3s' }}>
                 Sign In
               </Link>
@@ -154,6 +149,13 @@ const Navbar = () => {
             </>
           )}
         </div>
+        </div>
+
+        <button className="mobile-menu-btn material-symbols-outlined" 
+          style={{ color: isLanding && !scrolled && !mobileMenuOpen ? 'rgba(255,255,255,0.9)' : 'var(--on-surface)' }}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          {mobileMenuOpen ? 'close' : 'menu'}
+        </button>
       </nav>
 
       {/* Click outside to close dropdown */}
