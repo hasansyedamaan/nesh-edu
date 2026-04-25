@@ -11,7 +11,12 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000'],
+  origin: [
+    'http://localhost:5173', 
+    'http://localhost:3000',
+    'https://nesh-edu.vercel.app',
+    'https://neshedu.com'
+  ],
   credentials: true
 }));
 app.use(express.json());
@@ -30,6 +35,11 @@ app.use('/api/assignments', require('./routes/assignments'));
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'NESH API running', timestamp: new Date() });
+});
+
+// Root route
+app.get('/', (req, res) => {
+  res.json({ status: 'NESHEDU API running', message: 'Welcome to NESHEDU Educational Society' });
 });
 
 // Error handler
