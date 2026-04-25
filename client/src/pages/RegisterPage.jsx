@@ -33,7 +33,7 @@ const RegisterPage = () => {
 
       <div style={{ width:'100%', maxWidth:480, position:'relative', zIndex:2 }}>
         <Link to="/" style={{ display:'flex', justifyContent:'center', marginBottom:36 }}>
-          <span style={{ fontSize:32, fontWeight:900, letterSpacing:'-0.04em' }}>NESH</span>
+          <span style={{ fontSize:32, fontWeight:900, letterSpacing:'-0.04em' }}>NESHEDU</span>
         </Link>
 
         <div className="glass-card" style={{ borderRadius:32, padding:48 }}>

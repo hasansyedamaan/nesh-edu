@@ -15,7 +15,7 @@ const Certificates = () => {
   const downloadCertificate = (enrollment) => {
     const cert = `
 ======================================
-      NESH COGNITIVE SYSTEMS
+      NESHEDU EDUCATIONAL SOCIETY
         CERTIFICATE OF
         COMPLETION
 ======================================
@@ -38,7 +38,7 @@ on ${new Date(enrollment.certificateIssuedAt).toLocaleDateString()}
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `NESH-Certificate-${enrollment.course?.title?.replace(/\s+/g, '-')}.txt`;
+    a.download = `NESHEDU-Certificate-${enrollment.course?.title?.replace(/\s+/g, '-')}.txt`;
     a.click();
     URL.revokeObjectURL(url);
   };

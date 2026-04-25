@@ -5,9 +5,9 @@ const Footer = () => (
     <div style={{ maxWidth:1400, margin:'0 auto', padding:'0 48px',
       display:'flex', justifyContent:'space-between', alignItems:'center', gap:40, flexWrap:'wrap' }}>
       <div>
-        <span style={{ fontWeight:900, fontSize:28, letterSpacing:'-0.04em' }}>NESH</span>
+        <span style={{ fontWeight:900, fontSize:28, letterSpacing:'-0.04em' }}>NESHEDU</span>
         <p style={{ fontSize:11, fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', color:'var(--outline)', marginTop:8 }}>
-          © 2024 NESH Cognitive Systems. All rights reserved.
+          © 2026 NESHEDU Educational Society. All rights reserved.
         </p>
       </div>
       <div style={{ display:'flex', gap:36, flexWrap:'wrap' }}>

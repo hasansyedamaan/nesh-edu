@@ -61,7 +61,7 @@ const MetricsSection = () => {
         <div className="glass-card tilt-card reveal-element" style={{ borderRadius:28, padding:40, position:'relative', overflow:'hidden' }}
           onMouseMove={tiltCard} onMouseLeave={resetCard}>
           <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:36 }}>
-            <h3 style={{ fontSize:20, fontWeight:600 }}>Cognitive Velocity</h3>
+            <h3 style={{ fontSize:20, fontWeight:600 }}>Learning Progress</h3>
             <div style={{ display:'flex', gap:4, background:'var(--surface-container-low)', padding:6, borderRadius:9999 }}>
               <span style={{ padding:'6px 20px', borderRadius:9999, background:'white', boxShadow:'0 2px 8px rgba(0,0,0,0.06)',
                 color:'var(--primary)', fontWeight:700, fontSize:13, cursor:'pointer' }}>Day</span>

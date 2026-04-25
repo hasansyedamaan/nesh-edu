@@ -51,7 +51,7 @@ const HeroSection = () => {
             borderRadius:9999, background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.2)',
             backdropFilter:'blur(12px)', width:'fit-content' }}>
             <span style={{ width:10, height:10, borderRadius:'50%', background:'var(--primary-container)', animation:'pulse-node 2s infinite' }} />
-            <span style={{ color:'rgba(255,255,255,0.9)', fontSize:11, fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase' }}>Cognitive Systems v2.4</span>
+            <span style={{ color:'rgba(255,255,255,0.9)', fontSize:11, fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase' }}>Educational Society v2.4</span>
           </div>
           <h1 style={{ fontSize:'clamp(2.8rem,5vw,4rem)', fontWeight:800, lineHeight:1.1, letterSpacing:'-0.03em', color:'white' }}>
             Master the Digital <br /><span style={{ color:'var(--primary-container)' }}>Ether.</span>

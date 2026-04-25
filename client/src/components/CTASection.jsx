@@ -20,7 +20,7 @@ const CTASection = () => {
             Ready to <br /><span style={{ color:'var(--primary)', fontStyle:'italic' }}>evolve?</span>
           </h2>
           <p style={{ color:'var(--on-surface-variant)', fontSize:18, lineHeight:1.7 }}>
-            Join 40,000+ active learners currently navigating the NESH ecosystem. Your cognitive journey starts here.
+            Join 40,000+ active learners currently navigating the NESHEDU ecosystem. Your educational journey starts here.
           </p>
           <div style={{ display:'flex', gap:16, flexWrap:'wrap' }}>
             <Link to="/register" style={{ background:'var(--primary)', color:'white',

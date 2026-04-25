@@ -47,7 +47,7 @@ const LoginPage = () => {
 
       <div style={{ width:'100%', maxWidth:480, position:'relative', zIndex:2 }}>
         <Link to="/" style={{ display:'flex', justifyContent:'center', marginBottom:36 }}>
-          <span style={{ fontSize:32, fontWeight:900, letterSpacing:'-0.04em', color:'var(--on-surface)' }}>NESH</span>
+          <span style={{ fontSize:32, fontWeight:900, letterSpacing:'-0.04em', color:'var(--on-surface)' }}>NESHEDU</span>
         </Link>
 
         <div className="glass-card" style={{ borderRadius:32, padding:48 }}>

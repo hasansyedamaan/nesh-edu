@@ -40,7 +40,7 @@ const Sidebar = () => {
       {/* Logo */}
       <div style={{ padding:'0 28px 32px', borderBottom:'1px solid var(--surface-container)' }}>
         <span style={{ fontSize:26, fontWeight:900, letterSpacing:'-0.04em', cursor:'pointer' }}
-          onClick={() => navigate('/')}>NESH</span>
+          onClick={() => navigate('/')}>NESHEDU</span>
         <div style={{ marginTop:20, display:'flex', alignItems:'center', gap:12 }}>
           <div style={{ width:40, height:40, borderRadius:'50%', background:roleBg,
             display:'flex', alignItems:'center', justifyContent:'center',
