@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './WelcomePage.css';
 
 const WelcomePage = () => {
@@ -15,6 +16,10 @@ const WelcomePage = () => {
 
   return (
     <div className="welcome-page">
+      <Link to="/" style={{ position: 'absolute', top: 32, left: 32, display: 'flex', alignItems: 'center', gap: 8, color: 'var(--on-surface)', fontWeight: 700, fontSize: 14, textDecoration: 'none', background: 'rgba(255,255,255,0.6)', padding: '10px 16px', borderRadius: 9999, backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.3)', transition: 'all 0.3s', zIndex: 100 }} onMouseEnter={e => e.currentTarget.style.background='rgba(255,255,255,0.9)'} onMouseLeave={e => e.currentTarget.style.background='rgba(255,255,255,0.6)'}>
+        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>home</span>
+        Back to Home
+      </Link>
       <div className="welcome-content">
         <div className={`welcome-step ${step === 1 ? 'active' : ''}`}>
           <div className="welcome-icon">

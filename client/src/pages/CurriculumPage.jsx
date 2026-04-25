@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -35,28 +36,30 @@ const CurriculumPage = () => {
           <div style={{ display: 'flex', justifyContent: 'center', padding: 60 }}><div className="spinner" /></div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 24 }}>
-            <a href={GOOGLE_FORM_LINK} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-              <div className="glass-card" style={{ borderRadius: 20, overflow: 'hidden', transition: 'transform 0.3s', cursor: 'pointer', border: '2px solid var(--primary)' }}
-                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
-                onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
-                <div style={{ aspectRatio: '16/9', background: 'linear-gradient(135deg, var(--primary) 0%, #191c1e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 48, color: 'white', opacity: 0.8 }}>psychology</span>
-                  <span style={{ position: 'absolute', top: 12, right: 12, background: 'var(--error)', color: 'white', fontSize: 10, fontWeight: 800, padding: '4px 10px', borderRadius: 9999, letterSpacing: '0.05em' }}>FREE DEMO</span>
+            <div className="glass-card" style={{ borderRadius: 20, overflow: 'hidden', transition: 'transform 0.3s', border: '2px solid var(--primary)' }}
+              onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
+              onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
+              <div style={{ aspectRatio: '16/9', background: 'linear-gradient(135deg, var(--primary) 0%, #191c1e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 48, color: 'white', opacity: 0.8 }}>psychology</span>
+                <span style={{ position: 'absolute', top: 12, right: 12, background: 'var(--error)', color: 'white', fontSize: 10, fontWeight: 800, padding: '4px 10px', borderRadius: 9999, letterSpacing: '0.05em' }}>FREE DEMO</span>
+              </div>
+              <div style={{ padding: 20 }}>
+                <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, background: 'var(--primary-container)', color: 'var(--on-primary-container)', padding: '4px 10px', borderRadius: 9999 }}>AI/ML</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, background: 'var(--error-container)', color: 'var(--on-error-container)', padding: '4px 10px', borderRadius: 9999 }}>LIVE DEMO</span>
                 </div>
-                <div style={{ padding: 20 }}>
-                  <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
-                    <span style={{ fontSize: 11, fontWeight: 700, background: 'var(--primary-container)', color: 'var(--on-primary-container)', padding: '4px 10px', borderRadius: 9999 }}>AI/ML</span>
-                    <span style={{ fontSize: 11, fontWeight: 700, background: 'var(--error-container)', color: 'var(--on-error-container)', padding: '4px 10px', borderRadius: 9999 }}>LIVE DEMO</span>
-                  </div>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: 'var(--on-surface)' }}>{DEMO_COURSE.title}</h3>
-                  <p style={{ fontSize: 13, color: 'var(--outline)', marginBottom: 12, lineHeight: 1.5 }}>{DEMO_COURSE.shortDescription}</p>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--primary)' }}>FREE</span>
-                    <span style={{ padding: '8px 16px', background: 'var(--primary)', color: 'white', borderRadius: 8, fontSize: 12, fontWeight: 700 }}>Register Now →</span>
-                  </div>
+                <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: 'var(--on-surface)' }}>{DEMO_COURSE.title}</h3>
+                <p style={{ fontSize: 13, color: 'var(--outline)', marginBottom: 20, lineHeight: 1.5 }}>{DEMO_COURSE.shortDescription}</p>
+                <div style={{ display: 'flex', gap: 12 }}>
+                  <Link to="/demo-course" style={{ flex: 1, textAlign: 'center', padding: '10px 16px', background: 'var(--surface-container-low)', color: 'var(--on-surface)', border: '1px solid var(--outline-variant)', borderRadius: 12, fontSize: 13, fontWeight: 700, textDecoration: 'none', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.background='var(--surface-container)'} onMouseLeave={e => e.currentTarget.style.background='var(--surface-container-low)'}>
+                    Learn More
+                  </Link>
+                  <a href={GOOGLE_FORM_LINK} target="_blank" rel="noopener noreferrer" style={{ flex: 1, textAlign: 'center', padding: '10px 16px', background: 'var(--primary)', color: 'white', borderRadius: 12, fontSize: 13, fontWeight: 700, textDecoration: 'none', transition: 'all 0.2s' }} onMouseEnter={e => e.currentTarget.style.filter='brightness(1.1)'} onMouseLeave={e => e.currentTarget.style.filter='brightness(1)'}>
+                    Register Now
+                  </a>
                 </div>
               </div>
-            </a>
+            </div>
           </div>
         )}
       </div>
