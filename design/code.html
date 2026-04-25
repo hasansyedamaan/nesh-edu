@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#191c1e",
+                        "primary": "#256958",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#2f140b",
+                        "on-surface-variant": "#3f4945",
+                        "inverse-primary": "#91d4bf",
+                        "surface-variant": "#e0e3e5",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#191541",
+                        "secondary-fixed-dim": "#c6c1f7",
+                        "on-primary-fixed-variant": "#005141",
+                        "on-error": "#ffffff",
+                        "tertiary": "#7b5549",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-fixed": "#e3dfff",
+                        "primary-fixed-dim": "#91d4bf",
+                        "on-secondary-fixed-variant": "#45416f",
+                        "outline": "#6f7975",
+                        "tertiary-fixed-dim": "#edbbac",
+                        "surface-tint": "#256958",
+                        "surface-container": "#eceef0",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-surface": "#191c1e",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-container": "#cec9ff",
+                        "inverse-surface": "#2d3133",
+                        "outline-variant": "#bfc9c4",
+                        "on-tertiary-fixed-variant": "#613e33",
+                        "secondary": "#5d5988",
+                        "on-tertiary-container": "#744e42",
+                        "on-primary-fixed": "#002019",
+                        "tertiary-container": "#f5c3b3",
+                        "primary-fixed": "#acf0db",
+                        "primary-container": "#98dbc6",
+                        "tertiary-fixed": "#ffdbd0",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-container": "#565381",
+                        "on-primary-container": "#1c6251"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "4xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "120px",
+                        "md": "32px",
+                        "sm": "16px",
+                        "max_width": "1280px",
+                        "xs": "6px",
+                        "margin": "48px",
+                        "gutter": "32px",
+                        "base": "12px",
+                        "lg": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "display": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "label-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "headline-md": ["26px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+                        "headline-lg": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.03em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        :root {
+            --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 40px 0 rgba(28, 98, 81, 0.04);
+            transition: transform 0.4s var(--reveal-ease), box-shadow 0.4s var(--reveal-ease);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, #256958 0%, #191c1e 100%);
+        }
+        .glow-mint {
+            box-shadow: 0 0 25px rgba(152, 219, 198, 0.4);
+        }
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s var(--reveal-ease), transform 1.2s var(--reveal-ease);
+        }
+        .reveal-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1200px;
+        }
+        .magnetic-btn {
+            display: inline-block;
+            transition: transform 0.1s linear, box-shadow 0.3s var(--reveal-ease), background-color 0.3s var(--reveal-ease);
+        }
+        @keyframes pulse-node {
+            0%, 100% { opacity: 0.2; filter: drop-shadow(0 0 2px #98DBC6); }
+            50% { opacity: 0.6; filter: drop-shadow(0 0 12px #98DBC6); }
+        }
+        .circuit-line-pulse {
+            animation: pulse-node 4s infinite ease-in-out;
+        }
+        .parallax-layer {
+            transition: transform 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+            will-change: transform;
+        }
+        #chart-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            transition: stroke-dashoffset 2.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        #chart-path.draw {
+            stroke-dashoffset: 0;
+        }
+
+        .character-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .character-body { fill: #f3f4f6; stroke: #1e293b; stroke-width: 3; }
+        .character-hoodie { fill: #acf0db; stroke: #1e293b; stroke-width: 3; }
+        .character-pants { fill: #c6c1f7; stroke: #1e293b; stroke-width: 3; }
+        .character-hair { fill: #1e293b; }
+        .character-skin { fill: #ffffff; stroke: #1e293b; stroke-width: 3; }
+        .character-glasses { fill: none; stroke: #1e293b; stroke-width: 3; }
+        
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(18deg); }
+        }
+        .arm-wave {
+            transform-origin: 320px 240px;
+            animation: wave 1.2s ease-in-out 3;
+        }
+
+        @keyframes blink {
+            0%, 92%, 100% { transform: scaleY(1); }
+            96% { transform: scaleY(0.1); }
+        }
+        .eye { transform-origin: center; animation: blink 4.5s infinite; }
+
+        .speech-bubble {
+            opacity: 0;
+            transform: scale(0.6);
+            transform-origin: bottom left;
+            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .speech-bubble.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .book {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s var(--reveal-ease);
+        }
+        .book.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes head-bob {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(4px) rotate(1.5deg); }
+        }
+        .head-reading {
+            animation: head-bob 3.5s ease-in-out infinite;
+            transform-origin: center bottom;
+        }
+
+        /* Section Overlap/Transition */
+        .section-separator {
+            margin-top: -100px;
+            z-index: 20;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<header class="fixed top-0 z-[100] w-full bg-white/70 backdrop-blur-[25px] border-b border-white/40 shadow-sm">
+<nav class="flex items-center justify-between px-10 py-5 max-w-[1400px] mx-auto font-['Manrope'] antialiased">
+<div class="flex items-center gap-16">
+<span class="text-3xl font-extrabold tracking-tighter text-slate-900">NESH</span>
+<div class="hidden lg:flex items-center gap-10">
+<a class="text-primary border-b-2 border-primary-container font-bold py-1" href="#">Curriculum</a>
+<a class="text-slate-500 font-semibold hover:text-primary transition-colors duration-300" href="#">Analytics</a>
+<a class="text-slate-500 font-semibold hover:text-primary transition-colors duration-300" href="#">Mentors</a>
+<a class="text-slate-500 font-semibold hover:text-primary transition-colors duration-300" href="#">Library</a>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-5">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-primary transition-colors scale-110">notifications</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-primary transition-colors scale-110">settings</span>
+</div>
+<button class="magnetic-btn bg-primary text-white px-8 py-3 rounded-full font-label-md hover:shadow-lg hover:brightness-110 transition-all">
+                Get Started
+            </button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="hero-gradient min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-10 pb-40">
+<div class="absolute inset-0 opacity-15 pointer-events-none parallax-layer" data-speed="0.04" style="background-image: radial-gradient(#98DBC6 1px, transparent 1px); background-size: 50px 50px;"></div>
+<div class="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-2 items-center gap-24 relative z-10 pt-20">
+<div class="space-y-10 reveal-element active" style="transition-delay: 0.2s">
+<div class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-white/90 font-label-sm uppercase tracking-[0.2em]">Cognitive Systems v2.4</span>
+</div>
+<h1 class="font-display text-display text-white leading-[1.1]">
+                    Master the Digital <br/><span class="text-primary-container">Ether.</span>
+</h1>
+<p class="text-white/70 font-body-lg max-w-xl text-lg lg:text-xl">
+                    A high-performance educational environment built for the next generation of intellectual leaders. Experience cognitive clarity through refined digital learning.
+                </p>
+<div class="flex flex-wrap gap-6 pt-6">
+<button class="magnetic-btn bg-primary-container text-on-primary-container px-10 py-5 rounded-2xl font-label-md hover:shadow-xl hover:scale-105 transition-all">
+                        Launch Hub
+                    </button>
+<button class="magnetic-btn border border-white/30 text-white px-10 py-5 rounded-2xl font-label-md backdrop-blur-sm hover:bg-white/10 hover:scale-105 transition-all">
+                        View Roadmap
+                    </button>
+</div>
+</div>
+<div class="relative flex justify-center items-center h-[600px]">
+<!-- Parallax Data Nodes -->
+<div class="absolute inset-0 z-0">
+<div class="parallax-layer absolute top-0 left-20 glass-card p-5 rounded-2xl text-primary font-bold shadow-2xl" data-speed="0.12">
+<span class="text-xs block text-slate-500 uppercase font-bold tracking-wider mb-1">Retention</span> <span class="counter" data-target="100">0</span>%
+                    </div>
+<div class="parallax-layer absolute bottom-32 right-10 glass-card p-5 rounded-2xl text-secondary font-bold shadow-2xl" data-speed="0.22">
+<span class="text-xs block text-slate-500 uppercase font-bold tracking-wider mb-1">IQ Delta</span> +<span class="counter" data-target="100">0</span>pts
+                    </div>
+<div class="parallax-layer absolute top-1/2 left-0 glass-card p-5 rounded-2xl text-tertiary font-bold shadow-2xl" data-speed="0.18">
+<span class="text-xs block text-slate-500 uppercase font-bold tracking-wider mb-1">Focus</span> <span class="counter" data-target="100">0</span>%
+                    </div>
+</div>
+<!-- Main Animated Character -->
+<div class="relative z-10 w-full max-w-lg h-full flex items-center justify-center reveal-element active" style="transition-delay: 0.5s">
+<div class="parallax-layer w-full h-full relative flex items-center justify-center" data-speed="0.08">
+<!-- SVG Character -->
+<svg class="character-svg" viewbox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+<!-- Background Chair/Beanbag -->
+<path d="M150 400 Q150 350 250 350 T350 400 L350 450 Q250 470 150 450 Z" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"></path>
+<!-- Character Body -->
+<g class="character-entire">
+<!-- Pants/Legs -->
+<path class="character-pants" d="M200 350 L200 450 Q225 460 245 450 L245 380 L255 380 L255 450 Q275 460 300 450 L300 350 Z"></path>
+<!-- Hoodie -->
+<path class="character-hoodie" d="M180 250 Q180 360 250 370 Q320 360 320 250 Z"></path>
+<path d="M230 270 L245 300 M270 270 L255 300" stroke="#1e293b" stroke-linecap="round" stroke-width="2"></path>
+<!-- Arms -->
+<g class="arm-left">
+<path class="character-hoodie" d="M180 250 Q140 300 160 340" fill="none"></path>
+</g>
+<g class="arm-right arm-wave" id="waving-arm">
+<path class="character-hoodie" d="M320 250 Q360 220 380 180" fill="none" id="arm-stroke"></path>
+<circle class="character-skin" cx="385" cy="170" id="hand-circle" r="15"></circle>
+</g>
+<!-- Head Group -->
+<g class="character-head head-reading">
+<circle class="character-skin" cx="250" cy="180" r="70"></circle>
+<path class="character-hair" d="M180 180 Q180 110 250 110 Q320 110 320 180 L320 190 Q250 160 180 190 Z"></path>
+<!-- Glasses & Eyes -->
+<g class="eye-group">
+<circle class="character-glasses" cx="220" cy="190" r="18"></circle>
+<circle class="character-glasses" cx="280" cy="190" r="18"></circle>
+<line class="character-glasses" x1="238" x2="262" y1="190" y2="190"></line>
+<circle class="eye" cx="220" cy="190" fill="#1e293b" r="3"></circle>
+<circle class="eye" cx="280" cy="190" fill="#1e293b" r="3"></circle>
+</g>
+<path d="M240 220 Q250 230 260 220" fill="none" stroke="#1e293b" stroke-linecap="round" stroke-width="2"></path>
+</g>
+<!-- Book -->
+<g class="book" id="reading-book">
+<path d="M180 340 L250 360 L320 340 L320 280 L250 300 L180 280 Z" fill="#ffffff" stroke="#1e293b" stroke-width="2"></path>
+<line stroke="#cbd5e1" stroke-width="1" x1="250" x2="250" y1="300" y2="360"></line>
+<path d="M190 295 H240 M190 305 H240 M190 315 H230" stroke="#94a3b8" stroke-width="1"></path>
+<path d="M260 295 H310 M260 305 H310 M260 315 H300" stroke="#94a3b8" stroke-width="1"></path>
+</g>
+</g>
+<!-- Speech Bubble -->
+<g class="speech-bubble" id="hello-bubble">
+<rect fill="white" height="60" rx="20" stroke="#98DBC6" stroke-width="2" width="140" x="330" y="80"></rect>
+<path d="M360 140 L350 160 L380 140" fill="white" stroke="#98DBC6" stroke-width="2"></path>
+<text fill="#1c6251" font-family="Manrope" font-size="16" font-weight="800" text-anchor="middle" x="400" y="115">Hello there!</text>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-surface to-transparent"></div>
+</section>
+<!-- Performance Metrics -->
+<section class="max-w-[1400px] mx-auto px-10 py-xl section-separator">
+<div class="flex flex-col md:flex-row justify-between items-end mb-lg gap-10 reveal-element">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-6">Performance Metrics</h2>
+<p class="text-on-surface-variant font-body-lg max-w-lg">Real-time analytical feedback on your cognitive progression and curriculum mastery.</p>
+</div>
+<div class="flex gap-4">
+<div class="magnetic-btn px-8 py-4 rounded-full bg-white border border-outline-variant flex items-center gap-4 cursor-pointer hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-primary scale-110">analytics</span>
+<span class="font-label-md">Live Stream</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+<!-- Large Chart Card -->
+<div class="lg:col-span-2 glass-card rounded-3xl p-10 relative overflow-hidden tilt-card reveal-element" style="transition-delay: 0.1s">
+<div class="flex justify-between items-center mb-10">
+<h3 class="font-headline-md text-on-surface">Cognitive Velocity</h3>
+<div class="flex gap-3 bg-surface-container-low p-1.5 rounded-full">
+<span class="px-5 py-1.5 rounded-full bg-white shadow-sm text-primary font-bold text-sm cursor-pointer">Day</span>
+<span class="px-5 py-1.5 rounded-full text-outline font-bold text-sm cursor-pointer hover:text-on-surface transition-colors">Week</span>
+</div>
+</div>
+<div class="h-80 flex items-end justify-between gap-2 relative">
+<div class="absolute inset-0 flex flex-col justify-between opacity-10 pointer-events-none">
+<div class="border-t border-on-surface"></div>
+<div class="border-t border-on-surface"></div>
+<div class="border-t border-on-surface"></div>
+<div class="border-t border-on-surface"></div>
+</div>
+<div class="w-full h-full relative">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 100">
+<path d="M0,80 Q50,70 100,40 T200,30 T300,10 T400,20" fill="none" id="chart-path" stroke="#256958" stroke-linecap="round" stroke-width="4"></path>
+<path d="M0,80 Q50,70 100,40 T200,30 T300,10 T400,20 L400,100 L0,100 Z" fill="url(#grad1)" opacity="0.1"></path>
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#98DBC6;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#98DBC6;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<div class="mt-12 grid grid-cols-3 gap-8 border-t border-surface-variant pt-8">
+<div>
+<span class="block font-label-sm text-outline uppercase tracking-wider mb-2">Peak Focus</span>
+<span class="text-3xl font-extrabold text-on-surface"><span class="counter" data-target="92.4">0</span>%</span>
+</div>
+<div>
+<span class="block font-label-sm text-outline uppercase tracking-wider mb-2">Knowledge Sync</span>
+<span class="text-3xl font-extrabold text-on-surface"><span class="counter" data-target="1.2">0</span>ms</span>
+</div>
+<div>
+<span class="block font-label-sm text-outline uppercase tracking-wider mb-2">Session XP</span>
+<span class="text-3xl font-extrabold text-on-surface">+<span class="counter" data-target="1420">0</span></span>
+</div>
+</div>
+</div>
+<!-- Vertical Metric Stack -->
+<div class="space-y-gutter">
+<div class="glass-card rounded-3xl p-8 tilt-card reveal-element" style="transition-delay: 0.2s">
+<div class="flex items-center gap-5 mb-6">
+<div class="w-14 h-14 rounded-2xl bg-secondary-container flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl">psychology</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">Mental Endurance</h4>
+<p class="text-sm text-outline font-medium uppercase tracking-tight">Tier 3 Master</p>
+</div>
+</div>
+<div class="h-2.5 w-full bg-surface-container rounded-full overflow-hidden shadow-inner">
+<div class="h-full bg-secondary progress-bar rounded-full" data-width="75%" style="width: 0%"></div>
+</div>
+</div>
+<div class="glass-card rounded-3xl p-8 tilt-card reveal-element" style="transition-delay: 0.3s">
+<div class="flex items-center gap-5 mb-6">
+<div class="w-14 h-14 rounded-2xl bg-tertiary-container flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-on-tertiary-container text-3xl">model_training</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">Skill Synthesis</h4>
+<p class="text-sm text-outline font-medium uppercase tracking-tight">48 Nodes Active</p>
+</div>
+</div>
+<div class="h-2.5 w-full bg-surface-container rounded-full overflow-hidden shadow-inner">
+<div class="h-full bg-tertiary progress-bar rounded-full" data-width="50%" style="width: 0%"></div>
+</div>
+</div>
+<div class="bg-primary p-10 rounded-3xl text-white relative overflow-hidden reveal-element group transition-all hover:shadow-2xl" style="transition-delay: 0.4s">
+<div class="relative z-10">
+<h4 class="font-headline-md mb-4 text-3xl">Upgrade to Pro</h4>
+<p class="text-white/80 font-body-md mb-8 text-lg">Unlock the full cognitive potential suite with advanced neural mapping.</p>
+<button class="magnetic-btn w-full py-5 bg-white text-primary rounded-2xl font-label-md hover:bg-white/90 transition-colors">Get Started Now</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-8 -right-8 text-white/10 text-[180px] rotate-12 group-hover:rotate-45 transition-transform duration-1000">rocket_launch</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Curriculum Grid -->
+<section class="bg-surface-container-lowest py-xl relative overflow-hidden mt-10">
+<div class="max-w-[1400px] mx-auto px-10 relative">
+<!-- Decorative Circuit Lines -->
+<div class="absolute top-0 left-1/4 h-full w-[1px] bg-gradient-to-b from-transparent via-primary-container/40 to-transparent circuit-line-pulse"></div>
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary-container/40 to-transparent circuit-line-pulse"></div>
+<div class="text-center mb-xl reveal-element">
+<span class="font-label-sm text-primary uppercase tracking-[0.3em] font-extrabold mb-6 block">The Ecosystem</span>
+<h2 class="font-display text-headline-lg text-on-background text-5xl">Curriculum Architecture</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative z-10">
+<!-- Tech Card 1 -->
+<div class="glass-card p-10 rounded-[2.5rem] group tilt-card reveal-element" style="transition-delay: 0.1s">
+<div class="mb-8 w-16 h-16 rounded-2xl bg-white flex items-center justify-center border border-outline-variant glow-mint group-hover:scale-110 transition-transform shadow-md">
+<span class="material-symbols-outlined text-primary text-4xl">data_object</span>
+</div>
+<h3 class="font-headline-md mb-4 text-2xl">Core Logic</h3>
+<p class="text-on-surface-variant font-body-md mb-8 text-base">Fundamental structures for advanced data processing and algorithmic thinking.</p>
+<div class="flex items-center gap-3 text-primary font-bold group-hover:translate-x-3 transition-transform cursor-pointer">
+                        Explore Module <span class="material-symbols-outlined text-sm font-black">arrow_forward</span>
+</div>
+</div>
+<!-- Tech Card 2 -->
+<div class="glass-card p-10 rounded-[2.5rem] group tilt-card reveal-element" style="transition-delay: 0.2s">
+<div class="mb-8 w-16 h-16 rounded-2xl bg-white flex items-center justify-center border border-outline-variant glow-mint group-hover:scale-110 transition-transform shadow-md">
+<span class="material-symbols-outlined text-primary text-4xl">hub</span>
+</div>
+<h3 class="font-headline-md mb-4 text-2xl">Neural Nets</h3>
+<p class="text-on-surface-variant font-body-md mb-8 text-base">Master the architecture of interconnected learning systems and AI integrations.</p>
+<div class="flex items-center gap-3 text-primary font-bold group-hover:translate-x-3 transition-transform cursor-pointer">
+                        Explore Module <span class="material-symbols-outlined text-sm font-black">arrow_forward</span>
+</div>
+</div>
+<!-- Tech Card 3 -->
+<div class="glass-card p-10 rounded-[2.5rem] group tilt-card reveal-element" style="transition-delay: 0.3s">
+<div class="mb-8 w-16 h-16 rounded-2xl bg-white flex items-center justify-center border border-outline-variant glow-mint group-hover:scale-110 transition-transform shadow-md">
+<span class="material-symbols-outlined text-primary text-4xl">security</span>
+</div>
+<h3 class="font-headline-md mb-4 text-2xl">System Integrity</h3>
+<p class="text-on-surface-variant font-body-md mb-8 text-base">Advanced protocols for maintaining secure, high-integrity educational nodes.</p>
+<div class="flex items-center gap-3 text-primary font-bold group-hover:translate-x-3 transition-transform cursor-pointer">
+                        Explore Module <span class="material-symbols-outlined text-sm font-black">arrow_forward</span>
+</div>
+</div>
+<!-- Tech Card 4 -->
+<div class="glass-card p-10 rounded-[2.5rem] group tilt-card reveal-element" style="transition-delay: 0.4s">
+<div class="mb-8 w-16 h-16 rounded-2xl bg-white flex items-center justify-center border border-outline-variant glow-mint group-hover:scale-110 transition-transform shadow-md">
+<span class="material-symbols-outlined text-primary text-4xl">auto_graph</span>
+</div>
+<h3 class="font-headline-md mb-4 text-2xl">Synthesis</h3>
+<p class="text-on-surface-variant font-body-md mb-8 text-base">The final layer where all disciplines converge into mastery of digital realms.</p>
+<div class="flex items-center gap-3 text-primary font-bold group-hover:translate-x-3 transition-transform cursor-pointer">
+                        Explore Module <span class="material-symbols-outlined text-sm font-black">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Asymmetric CTA Section -->
+<section class="max-w-[1400px] mx-auto px-10 py-xl">
+<div class="glass-card rounded-[3.5rem] overflow-hidden grid grid-cols-1 lg:grid-cols-2 items-center reveal-element shadow-2xl">
+<div class="p-16 lg:p-24 space-y-10">
+<h2 class="font-display text-display text-on-background text-6xl">Ready to <br/><span class="text-primary italic">evolve?</span></h2>
+<p class="text-on-surface-variant font-body-lg text-xl">Join 40,000+ active learners currently navigating the NESH ecosystem. Your cognitive journey starts here.</p>
+<div class="flex flex-col sm:flex-row gap-6">
+<button class="magnetic-btn bg-primary text-white px-10 py-5 rounded-[1.25rem] font-bold hover:scale-105 hover:shadow-lg transition-all">Initialize Connection</button>
+<button class="magnetic-btn border border-outline px-10 py-5 rounded-[1.25rem] font-bold hover:bg-surface-variant hover:scale-105 transition-all">Speak to an Advisor</button>
+</div>
+</div>
+<div class="h-full min-h-[500px] relative bg-primary-fixed overflow-hidden">
+<img alt="Modern Learning Environment" class="w-full h-full object-cover parallax-layer" data-speed="0.1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJS4a2i8L8epzmlYh_dC1r1OkMjf9JcqiSgChHpjSlKent9hraSiFKEADp8wK60y8eTzjX-90jb6jfBtcCA7kkhfkABwSCMqIZoIXMWpzqrR1xKKr3YigAc5WqwDfmXD-B3EUskbRpwUISWw3bazeA0GDfFdk0oAetiAam6l72zajFllniPcjbwrI18C2Xi35nk0LaEQYzOB-iRfFot9Mxr1YpjLpq3KOOZREYuBJMR6Spm1lKxUQt7JjWY_IbKVkak0kEbWFltuw"/>
+<div class="absolute inset-0 bg-gradient-to-r from-white/40 to-transparent lg:from-transparent"></div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white/50 border-t border-slate-100 w-full py-16">
+<div class="max-w-[1400px] mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-12">
+<div class="flex flex-col items-center md:items-start gap-5">
+<span class="font-black text-slate-900 text-3xl tracking-tighter">NESH</span>
+<p class="font-['Manrope'] text-sm uppercase tracking-widest text-slate-400 font-bold">© 2024 NESH Cognitive Systems. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-10">
+<a class="font-['Manrope'] text-xs uppercase tracking-[0.2em] font-extrabold text-slate-500 hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Manrope'] text-xs uppercase tracking-[0.2em] font-extrabold text-slate-500 hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-['Manrope'] text-xs uppercase tracking-[0.2em] font-extrabold text-slate-500 hover:text-primary transition-colors" href="#">Help Center</a>
+<a class="font-['Manrope'] text-xs uppercase tracking-[0.2em] font-extrabold text-slate-500 hover:text-primary transition-colors" href="#">API Status</a>
+</div>
+</div>
+</footer>
+<script>
+    // Initialize GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Character Animation Sequence
+    window.addEventListener('DOMContentLoaded', () => {
+        const bubble = document.getElementById('hello-bubble');
+        const book = document.getElementById('reading-book');
+        const wavingArm = document.getElementById('waving-arm');
+        const armPath = document.getElementById('arm-stroke');
+        const hand = document.getElementById('hand-circle');
+
+        // Step 1: Initial Wave & Bubble
+        setTimeout(() => {
+            bubble.classList.add('active');
+        }, 1000);
+
+        // Step 2: Transition to Reading
+        setTimeout(() => {
+            bubble.classList.remove('active');
+            
+            // Morph Arm to Reading Position
+            gsap.to(armPath, { 
+                attr: { d: "M320 250 Q340 300 320 340" },
+                duration: 1.8,
+                ease: "power3.inOut"
+            });
+            gsap.to(hand, {
+                attr: { cx: 315, cy: 340 },
+                duration: 1.8,
+                ease: "power3.inOut"
+            });
+            wavingArm.style.animation = 'none';
+
+            // Show Book
+            book.classList.add('active');
+        }, 5000);
+    });
+
+    // Scroll Reveal Intersection Observer
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                
+                // Trigger Count Up
+                const counters = entry.target.querySelectorAll('.counter');
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    gsap.to(counter, {
+                        innerText: target,
+                        duration: 2.5,
+                        snap: { innerText: 0.1 },
+                        ease: "power4.out"
+                    });
+                });
+
+                // Trigger SVG Draw
+                const chartPath = entry.target.querySelector('#chart-path');
+                if(chartPath) chartPath.classList.add('draw');
+
+                // Trigger Progress Bars
+                const progressBars = entry.target.querySelectorAll('.progress-bar');
+                progressBars.forEach(bar => {
+                    bar.style.width = bar.getAttribute('data-width');
+                    bar.style.transition = 'width 2s cubic-bezier(0.16, 1, 0.3, 1)';
+                });
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-element').forEach(el => observer.observe(el));
+
+    // Refined Parallax Effect
+    let lastScrollY = window.pageYOffset;
+    const parallaxTick = () => {
+        const scrolled = window.pageYOffset;
+        document.querySelectorAll('.parallax-layer').forEach(layer => {
+            const speed = layer.getAttribute('data-speed');
+            const yPos = -(scrolled * speed);
+            layer.style.transform = `translateY(${yPos}px)`;
+        });
+        lastScrollY = scrolled;
+        requestAnimationFrame(parallaxTick);
+    };
+    requestAnimationFrame(parallaxTick);
+
+    // Magnetic Button Effect
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = `translate(0px, 0px)`;
+        });
+    });
+
+    // 3D Tilt Effect
+    document.querySelectorAll('.tilt-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 25;
+            const rotateY = -(x - centerX) / 25;
+            card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
+    });
+</script>
+</body></html>
