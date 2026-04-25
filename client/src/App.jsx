@@ -8,6 +8,7 @@ import AnalyticsPage from './pages/AnalyticsPage';
 import MentorsPage from './pages/MentorsPage';
 import LibraryPage from './pages/LibraryPage';
 import WelcomePage from './pages/WelcomePage';
+import ContactPage from './pages/ContactPage';
 import SettingsPage from './pages/Settings';
 import StudentDashboard from './pages/student/Dashboard';
 import StudentAssignments from './pages/student/Assignments';
@@ -54,6 +55,7 @@ function App() {
         <Route path="/mentors" element={<MentorsPage />} />
         <Route path="/library" element={<LibraryPage />} />
         <Route path="/welcome" element={<WelcomePage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/courses" element={<CourseBrowser />} />
         <Route path="/courses/:id" element={<CourseDetail />} />
 

@@ -29,7 +29,7 @@ const CTASection = () => {
               onMouseLeave={e=>{ e.currentTarget.style.transform='scale(1)'; e.currentTarget.style.boxShadow='none'; }}>
               Initialize Connection
             </Link>
-            <Link to="/welcome" style={{ border:'1px solid var(--outline)', padding:'18px 32px',
+            <Link to="/contact" style={{ border:'1px solid var(--outline)', padding:'18px 32px',
               borderRadius:20, fontWeight:700, fontSize:14, transition:'all 0.3s' }}
               onMouseEnter={e=>{ e.currentTarget.style.background='var(--surface-variant)'; e.currentTarget.style.transform='scale(1.04)'; }}
               onMouseLeave={e=>{ e.currentTarget.style.background='transparent'; e.currentTarget.style.transform='scale(1)'; }}>
