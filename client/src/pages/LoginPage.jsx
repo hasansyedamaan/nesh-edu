@@ -24,17 +24,23 @@ const LoginPage = () => {
     } finally { setLoading(false); }
   };
 
-  const demoLogin = async (email) => {
-    setForm({ email, password:'nesh1234' });
+  const demoLogin = async (email, password) => {
+    setForm({ email, password });
     setError(''); setLoading(true);
     try {
-      const user = await login(email, 'nesh1234');
+      const user = await login(email, password);
       if (user.role === 'admin') navigate('/admin/dashboard');
       else if (user.role === 'instructor') navigate('/instructor/dashboard');
       else navigate('/dashboard');
     } catch { setError('Demo login failed.'); }
     finally { setLoading(false); }
   };
+
+  const demoUsers = [
+    ['admin@neshedu.com', 'admin123', 'Admin'],
+    ['instructor@neshedu.com', 'instructor123', 'Instructor'],
+    ['student@neshedu.com', 'student123', 'Student']
+  ];
 
   return (
     <div style={{ minHeight:'100vh', background:'var(--background)', display:'flex', alignItems:'center',
@@ -89,12 +95,8 @@ const LoginPage = () => {
             <p style={{ fontSize:12, fontWeight:700, color:'var(--outline)', textAlign:'center',
               textTransform:'uppercase', letterSpacing:'0.1em', marginBottom:16 }}>Quick Demo Access</p>
             <div style={{ display:'flex', flexDirection:'column', gap:10 }}>
-              {[
-                ['admin@nesh.io','Admin'],
-                ['instructor@nesh.io','Instructor'],
-                ['student@nesh.io','Student']
-              ].map(([email, role]) => (
-                <button key={role} onClick={() => demoLogin(email)}
+              {demoUsers.map(([email, password, role]) => (
+                <button key={role} onClick={() => demoLogin(email, password)}
                   style={{ padding:'11px', borderRadius:10, background:'var(--surface-container-low)',
                     border:'1px solid var(--outline-variant)', fontWeight:600, fontSize:13,
                     color:'var(--on-surface-variant)', cursor:'pointer', transition:'all 0.25s' }}

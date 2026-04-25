@@ -41,7 +41,7 @@ const Navbar = () => {
         <div style={{ display:'flex', alignItems:'center', gap: 56 }}>
           <Link to="/" style={{ fontSize:28, fontWeight:800, letterSpacing:'-0.04em',
             color: isLanding && !scrolled ? 'white' : 'var(--on-surface)' }}>
-            NESH
+            NESHEDU
           </Link>
           <div style={{ display:'flex', gap:36 }} className="nav-links">
             {[['Curriculum', '/curriculum'], ['Analytics', '/analytics'], ['Mentors', '/mentors'], ['Library', '/library']].map(([label, href]) => (
