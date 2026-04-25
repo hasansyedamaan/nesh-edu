@@ -3,6 +3,18 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import api from '../api/axios';
 
+const DEMO_COURSE = {
+  title: 'Artificial Intelligence & Machine Learning - FREE Demo',
+  shortDescription: 'Join our FREE demo session on AI/ML this Sunday! Get insights into course structure, learning approach, and real-world applications.',
+  category: 'AI/ML',
+  level: 'Beginner',
+  price: 0,
+  thumbnail: null,
+  isDemo: true
+};
+
+const GOOGLE_FORM_LINK = 'https://docs.google.com/forms/d/e/1FAIpQLScgqu3_f10FERP0zew8QCreSQK_d39y4Pkj_9LM4c7oj_GTJw/viewform?usp=publish-editor';
+
 const CurriculumPage = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -49,6 +61,31 @@ const CurriculumPage = () => {
           <div style={{ textAlign: 'center', padding: 60, color: 'var(--outline)' }}>No courses found</div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 24 }}>
+            {/* Demo Course - AI/ML */}
+            <a href={GOOGLE_FORM_LINK} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+              <div className="glass-card" style={{ borderRadius: 20, overflow: 'hidden', transition: 'transform 0.3s', cursor: 'pointer', border: '2px solid var(--primary)' }}
+                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
+                onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
+                <div style={{ aspectRatio: '16/9', background: 'linear-gradient(135deg, var(--primary) 0%, #191c1e 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 48, color: 'white', opacity: 0.8 }}>psychology</span>
+                  <span style={{ position: 'absolute', top: 12, right: 12, background: 'var(--error)', color: 'white', fontSize: 10, fontWeight: 800, padding: '4px 10px', borderRadius: 9999, letterSpacing: '0.05em' }}>FREE DEMO</span>
+                </div>
+                <div style={{ padding: 20 }}>
+                  <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, background: 'var(--primary-container)', color: 'var(--on-primary-container)', padding: '4px 10px', borderRadius: 9999 }}>{DEMO_COURSE.category}</span>
+                    <span style={{ fontSize: 11, fontWeight: 700, background: 'var(--error-container)', color: 'var(--on-error-container)', padding: '4px 10px', borderRadius: 9999 }}>LIVE DEMO</span>
+                  </div>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: 'var(--on-surface)' }}>{DEMO_COURSE.title}</h3>
+                  <p style={{ fontSize: 13, color: 'var(--outline)', marginBottom: 12, lineHeight: 1.5 }}>{DEMO_COURSE.shortDescription}</p>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--primary)' }}>FREE</span>
+                    <span style={{ padding: '8px 16px', background: 'var(--primary)', color: 'white', borderRadius: 8, fontSize: 12, fontWeight: 700 }}>Register Now →</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            
+            {/* Regular Courses */}
             {courses.map(course => (
               <a key={course._id} href={`/courses/${course._id}`} style={{ textDecoration: 'none' }}>
                 <div className="glass-card" style={{ borderRadius: 20, overflow: 'hidden', transition: 'transform 0.3s', cursor: 'pointer' }}
