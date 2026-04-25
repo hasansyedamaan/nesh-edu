@@ -60,13 +60,13 @@ const HeroSection = () => {
             A high-performance educational environment built for the next generation of intellectual leaders.
           </p>
           <div style={{ display:'flex', gap:20, paddingTop:12, flexWrap:'wrap' }}>
-            <Link to="/register" style={{ background:'var(--primary-container)', color:'var(--on-primary-container)',
+            <Link to="/welcome" style={{ background:'var(--primary-container)', color:'var(--on-primary-container)',
               padding:'18px 36px', borderRadius:16, fontWeight:700, fontSize:14, transition:'all 0.3s' }}
               onMouseEnter={e=>{ e.currentTarget.style.transform='scale(1.05)'; e.currentTarget.style.boxShadow='0 16px 40px rgba(152,219,198,0.4)'; }}
               onMouseLeave={e=>{ e.currentTarget.style.transform='scale(1)'; e.currentTarget.style.boxShadow='none'; }}>
               Launch Hub
             </Link>
-            <Link to="/courses" style={{ border:'1px solid rgba(255,255,255,0.3)', color:'white',
+            <Link to="/welcome" style={{ border:'1px solid rgba(255,255,255,0.3)', color:'white',
               padding:'18px 36px', borderRadius:16, fontWeight:700, fontSize:14, backdropFilter:'blur(8px)', transition:'all 0.3s' }}
               onMouseEnter={e=>{ e.currentTarget.style.background='rgba(255,255,255,0.1)'; e.currentTarget.style.transform='scale(1.05)'; }}
               onMouseLeave={e=>{ e.currentTarget.style.background='transparent'; e.currentTarget.style.transform='scale(1)'; }}>

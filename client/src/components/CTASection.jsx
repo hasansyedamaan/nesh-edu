@@ -23,18 +23,18 @@ const CTASection = () => {
             Join 40,000+ active learners currently navigating the NESHEDU ecosystem. Your educational journey starts here.
           </p>
           <div style={{ display:'flex', gap:16, flexWrap:'wrap' }}>
-            <Link to="/register" style={{ background:'var(--primary)', color:'white',
+            <Link to="/welcome" style={{ background:'var(--primary)', color:'white',
               padding:'18px 32px', borderRadius:20, fontWeight:700, fontSize:14, transition:'all 0.3s' }}
               onMouseEnter={e=>{ e.currentTarget.style.transform='scale(1.04)'; e.currentTarget.style.boxShadow='0 12px 32px rgba(37,105,88,0.35)'; }}
               onMouseLeave={e=>{ e.currentTarget.style.transform='scale(1)'; e.currentTarget.style.boxShadow='none'; }}>
               Initialize Connection
             </Link>
-            <button style={{ border:'1px solid var(--outline)', padding:'18px 32px',
+            <Link to="/welcome" style={{ border:'1px solid var(--outline)', padding:'18px 32px',
               borderRadius:20, fontWeight:700, fontSize:14, transition:'all 0.3s' }}
               onMouseEnter={e=>{ e.currentTarget.style.background='var(--surface-variant)'; e.currentTarget.style.transform='scale(1.04)'; }}
               onMouseLeave={e=>{ e.currentTarget.style.background='transparent'; e.currentTarget.style.transform='scale(1)'; }}>
               Speak to an Advisor
-            </button>
+            </Link>
           </div>
         </div>
         <div style={{ background:'var(--primary-fixed)', position:'relative', overflow:'hidden', minHeight:480 }}>

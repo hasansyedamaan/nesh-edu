@@ -44,18 +44,21 @@ const Navbar = () => {
             NESHEDU
           </Link>
           <div style={{ display:'flex', gap:36 }} className="nav-links">
-            {[['Curriculum', '/curriculum'], ['Analytics', '/analytics'], ['Mentors', '/mentors'], ['Library', '/library']].map(([label, href]) => (
-              <Link key={label} to={href} style={{
-                color: isLanding && !scrolled ? 'rgba(255,255,255,0.8)' : 'var(--on-surface-variant)',
-                fontWeight: 600, fontSize:15,
-                borderBottom: location.pathname === href ? '2px solid var(--primary-container)' : '2px solid transparent',
-                paddingBottom: 4, transition: 'color 0.3s'
-              }}
-              onMouseEnter={e => e.target.style.color = isLanding && !scrolled ? 'white' : 'var(--primary)'}
-              onMouseLeave={e => e.target.style.color = isLanding && !scrolled ? 'rgba(255,255,255,0.8)' : 'var(--on-surface-variant)'}>
-                {label}
-              </Link>
-            ))}
+            {[['Curriculum', '/curriculum'], ['Analytics', '/analytics'], ['Mentors', '/mentors'], ['Library', '/library']].map(([label, href]) => {
+              const disabled = ['/analytics', '/library'].includes(href);
+              return (
+                <Link key={label} to={disabled ? '/welcome' : href} style={{
+                  color: isLanding && !scrolled ? 'rgba(255,255,255,0.8)' : 'var(--on-surface-variant)',
+                  fontWeight: 600, fontSize:15,
+                  borderBottom: location.pathname === href ? '2px solid var(--primary-container)' : '2px solid transparent',
+                  paddingBottom: 4, transition: 'color 0.3s'
+                }}
+                onMouseEnter={e => e.target.style.color = isLanding && !scrolled ? 'white' : 'var(--primary)'}
+                onMouseLeave={e => e.target.style.color = isLanding && !scrolled ? 'rgba(255,255,255,0.8)' : 'var(--on-surface-variant)'}>
+                  {label}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
@@ -130,12 +133,12 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Link to="/login" style={{ fontWeight:700, fontSize:14,
+              <Link to="/welcome" style={{ fontWeight:700, fontSize:14,
                 color: isLanding && !scrolled ? 'rgba(255,255,255,0.85)' : 'var(--on-surface-variant)',
                 transition:'color 0.3s' }}>
                 Sign In
               </Link>
-              <Link to="/register" className="magnetic-btn"
+              <Link to="/welcome" className="magnetic-btn"
                 style={{ background:'var(--primary)', color:'white', padding:'12px 28px',
                   borderRadius:9999, fontWeight:700, fontSize:14, letterSpacing:'0.02em',
                   transition:'all 0.3s var(--reveal-ease)' }}

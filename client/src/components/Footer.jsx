@@ -9,9 +9,10 @@ const Footer = () => (
         <p style={{ fontSize:11, fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', color:'var(--outline)', marginTop:8 }}>
           © 2026 NESHEDU Educational Society. All rights reserved.
         </p>
+        <p style={{ fontSize:11, color:'var(--outline)', marginTop:4 }}>admin@neshedu.com • +91 9634620272</p>
       </div>
       <div style={{ display:'flex', gap:36, flexWrap:'wrap' }}>
-        {['Privacy Policy','Terms of Service','Help Center','API Status'].map(label => (
+        {['Privacy Policy','Terms of Service','Help Center'].map(label => (
           <Link key={label} to="#"
             style={{ fontSize:11, fontWeight:800, letterSpacing:'0.2em', textTransform:'uppercase', color:'var(--outline)', transition:'color 0.3s' }}
             onMouseEnter={e=>e.currentTarget.style.color='var(--primary)'}
