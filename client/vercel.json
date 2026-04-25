@@ -1,6 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://nesh-edu.onrender.com/api/$1" },
-    { "source": "/uploads/(.*)", "destination": "https://nesh-edu.onrender.com/uploads/$1" }
-  ]
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install"
 }
