@@ -8,6 +8,7 @@ const Navbar = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -35,16 +36,15 @@ const Navbar = () => {
       boxShadow: scrolled ? '0 4px 30px rgba(28,98,81,0.06)' : 'none',
       transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)'
     }}>
-      <nav style={{ display:'flex', alignItems:'center', justifyContent:'space-between',
-        padding:'18px 48px', maxWidth:1400, margin:'0 auto' }}>
+      <nav className="responsive-nav">
         {/* Logo */}
-        <div style={{ display:'flex', alignItems:'center', gap: 56 }}>
+        <div className="nav-links-container">
           <Link to="/" style={{ fontSize:28, fontWeight:800, letterSpacing:'-0.04em',
             color: isLanding && !scrolled ? 'white' : 'var(--on-surface)' }}>
             NESHEDU
           </Link>
-          <div style={{ display:'flex', gap:36 }} className="nav-links">
-            {[['Curriculum', '/curriculum'], ['Analytics', '/analytics'], ['Mentors', '/mentors'], ['Library', '/library']].map(([label, href]) => {
+          <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+            {[['Home', '/'], ['Curriculum', '/curriculum'], ['Analytics', '/analytics'], ['Mentors', '/mentors'], ['Library', '/library']].map(([label, href]) => {
               const disabled = ['/analytics', '/library'].includes(href);
               return (
                 <Link key={label} to={disabled ? '/welcome' : href} style={{
@@ -63,7 +63,12 @@ const Navbar = () => {
         </div>
 
         {/* Actions */}
-        <div style={{ display:'flex', alignItems:'center', gap:20 }}>
+        <div className="nav-actions">
+          <button className="mobile-menu-btn material-symbols-outlined" 
+            style={{ color: isLanding && !scrolled ? 'rgba(255,255,255,0.7)' : 'var(--on-surface)' }}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? 'close' : 'menu'}
+          </button>
           {user ? (
             <>
               <span className="material-symbols-outlined"

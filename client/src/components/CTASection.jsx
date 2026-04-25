@@ -13,8 +13,8 @@ const CTASection = () => {
 
   return (
     <section ref={ref} style={{ maxWidth:1400, margin:'0 auto', padding:'80px 48px 120px' }}>
-      <div className="glass-card reveal-element" style={{ borderRadius:56, overflow:'hidden',
-        display:'grid', gridTemplateColumns:'1fr 1fr', boxShadow:'0 30px 80px rgba(28,98,81,0.10)' }}>
+      <div className="cta-grid reveal-element" style={{ borderRadius:32, overflow:'hidden',
+        boxShadow:'0 30px 80px rgba(28,98,81,0.10)' }}>
         <div style={{ padding:'80px 80px', display:'flex', flexDirection:'column', gap:36 }}>
           <h2 style={{ fontSize:'clamp(2.5rem,4vw,3.5rem)', fontWeight:800, letterSpacing:'-0.03em', lineHeight:1.1 }}>
             Ready to <br /><span style={{ color:'var(--primary)', fontStyle:'italic' }}>evolve?</span>

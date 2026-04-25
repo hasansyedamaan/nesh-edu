@@ -39,7 +39,7 @@ const MetricsSection = () => {
 
   return (
     <section ref={sectionRef} className="section-separator" style={{ maxWidth:1400, margin:'0 auto', padding:'120px 48px' }}>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:64 }}>
+      <div className="metrics-header">
         <div className="reveal-element">
           <h2 className="text-headline-lg" style={{ marginBottom:16 }}>Performance Metrics</h2>
           <p style={{ color:'var(--on-surface-variant)', fontSize:17, maxWidth:480, lineHeight:1.6 }}>
@@ -56,7 +56,7 @@ const MetricsSection = () => {
         </div>
       </div>
 
-      <div style={{ display:'grid', gridTemplateColumns:'2fr 1fr', gap:32 }}>
+      <div className="metrics-grid">
         {/* Chart Card */}
         <div className="glass-card tilt-card reveal-element" style={{ borderRadius:28, padding:40, position:'relative', overflow:'hidden' }}
           onMouseMove={tiltCard} onMouseLeave={resetCard}>
@@ -85,7 +85,7 @@ const MetricsSection = () => {
                 fill="none" stroke="#256958" strokeLinecap="round" strokeWidth="3.5" />
             </svg>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:24,
+          <div className="metrics-stats-grid" style={{
             marginTop:36, borderTop:'1px solid var(--surface-variant)', paddingTop:28 }}>
             {[
               ['Peak Focus', peakRef, '0', '%'],

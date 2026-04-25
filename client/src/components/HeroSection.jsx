@@ -43,8 +43,7 @@ const HeroSection = () => {
         position:'absolute', inset:0, opacity:0.12, pointerEvents:'none',
         backgroundImage:'radial-gradient(#98DBC6 1px, transparent 1px)', backgroundSize:'50px 50px' }} />
 
-      <div style={{ maxWidth:1400, width:'100%', display:'grid', gridTemplateColumns:'1fr 1fr',
-        alignItems:'center', gap:96, position:'relative', zIndex:10, paddingTop:100 }}>
+      <div className="hero-grid">
 
         <div className="reveal-element active" style={{ transitionDelay:'0.2s', display:'flex', flexDirection:'column', gap:36 }}>
           <div style={{ display:'inline-flex', alignItems:'center', gap:12, padding:'10px 20px',

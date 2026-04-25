@@ -47,7 +47,7 @@ const CurriculumGrid = () => {
           <h2 style={{ fontSize:'clamp(2rem,4vw,3rem)', fontWeight:800, letterSpacing:'-0.02em' }}>Curriculum Architecture</h2>
         </div>
 
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:32 }}>
+        <div className="curriculum-grid">
           {modules.map(({ icon, title, desc, category }, i) => (
             <div key={title} className="glass-card tilt-card reveal-element"
               style={{ padding:40, borderRadius:40, cursor:'pointer', transition:'all 0.4s var(--reveal-ease)',
