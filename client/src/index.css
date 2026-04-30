@@ -609,3 +609,47 @@ input, textarea, select { font-family: inherit; }
   }
 }
 
+/* ── Demo Course Page ───────────────────────────────────── */
+.demo-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 48px;
+  align-items: start;
+  padding: 120px 48px 60px;
+}
+
+.demo-enrollment-card {
+  border-radius: 24px;
+  overflow: hidden;
+  position: sticky;
+  top: 100px;
+}
+
+.demo-curriculum {
+  padding: 60px 48px 80px;
+}
+
+@media (max-width: 1024px) {
+  .demo-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 120px 48px 60px;
+  }
+  .demo-enrollment-card {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .demo-hero-grid {
+    padding: 120px 24px 60px;
+    gap: 24px;
+  }
+  .demo-enrollment-card {
+    border-radius: 16px;
+  }
+  .demo-curriculum {
+    padding: 40px 24px 60px;
+  }
+}
+

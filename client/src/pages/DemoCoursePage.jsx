@@ -62,9 +62,8 @@ const DemoCoursePage = () => {
     <div style={{ background:'var(--background)', minHeight:'100vh' }}>
       <Navbar />
       {/* Hero */}
-      <div style={{ background:'linear-gradient(135deg, var(--primary) 0%, #191c1e 100%)',
-        padding:'120px 48px 60px' }}>
-        <div style={{ maxWidth:1200, margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 400px', gap:48, alignItems:'start' }}>
+      <div style={{ background:'linear-gradient(135deg, var(--primary) 0%, #191c1e 100%)' }}>
+        <div className="demo-hero-grid">
           <div>
             <div style={{ display:'flex', gap:10, flexWrap:'wrap', marginBottom:20 }}>
               <span style={{ ...chip, padding:'6px 14px', borderRadius:9999, fontSize:12, fontWeight:700 }}>{DEMO_COURSE.category}</span>
@@ -110,7 +109,7 @@ const DemoCoursePage = () => {
           </div>
 
           {/* Enrollment card */}
-          <div className="glass-card" style={{ borderRadius:24, overflow:'hidden', position:'sticky', top:100 }}>
+          <div className="glass-card demo-enrollment-card">
             <div style={{ width:'100%', aspectRatio:'16/9', background:'linear-gradient(135deg, var(--primary) 0%, #191c1e 100%)',
                 display:'flex', alignItems:'center', justifyContent:'center', position:'relative' }}>
                 <span className="material-symbols-outlined" style={{ fontSize: 60, color: 'white', opacity: 0.8 }}>psychology</span>
@@ -143,7 +142,7 @@ const DemoCoursePage = () => {
       </div>
 
       {/* Curriculum */}
-      <div style={{ maxWidth:1200, margin:'0 auto', padding:'60px 48px 80px' }}>
+      <div className="demo-curriculum">
         <h2 style={{ fontSize:22, fontWeight:700, marginBottom:28 }}>Course Curriculum Preview</h2>
         <div style={{ display:'flex', flexDirection:'column', gap:16 }}>
           {DEMO_COURSE.modules.map((mod, mi) => (

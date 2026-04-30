@@ -2,29 +2,31 @@
 
 ## Commands
 
-- `npm run dev` - Run both client and server concurrently
-- `npm run server` - Run server only (nodemon on port 5000)
-- `npm run client` - Run client only (Vite on port 5173)
-- `npm run seed` - Seed database via `GET /api/seed` endpoint
-- `npm run lint` - Run ESLint on client (from `client/` dir)
-- `npm run install-all` - Install root + server + client deps
+- `npm run dev` - Run both client (Vite :5173) and server (Express :5000)
+- `npm run server` / `npm run client` - Run individually
+- `npm run seed` - Seeds DB via `node server/utils/seed.js`
+- `npm run lint` - ESLint on client only (no root/linter for server)
+- `npm run install-all` - Install deps for root + server + client
 
 ## Architecture
 
-- **Server** (Express/MongoDB): API at `/api/*`, routes in `server/routes/`, models in `server/models/`
-- **Client** (React/Vite): Proxies `/api` and `/uploads` to `http://localhost:5000`
-- **Database**: Requires `MONGO_URI` in `server/.env`
+Monorepo: root scripts orchestrate `server/` (CommonJS) and `client/` (ES modules).
+
+- **Server**: Express API at `/api/*`, routes in `server/routes/`, models in `server/models/`
+- **Client**: React 19 + Vite 8, proxies `/api` and `/uploads` to `localhost:5000`
+- **Database**: MongoDB via Mongoose, requires `MONGO_URI` in `server/.env`
 
 ## Key Files
 
-- `server/index.js` - Express entry, CORS origins, all route mounts
-- `server/config/db.js` - MongoDB connection via Mongoose
-- `client/vite.config.js` - Vite proxy configuration
+- `server/index.js` - Entry point, CORS config, route mounts, seed endpoint
+- `server/config/db.js` - MongoDB connection
+- `client/vite.config.js` - Proxy config
 
 ## Setup
 
-1. Ensure MongoDB is running locally (default: `mongodb://localhost:27017/nesh`)
-2. Visit `http://localhost:5000/api/seed` or use `npm run seed` to populate initial data
+1. MongoDB running (default: `mongodb://localhost:27017/nesh`)
+2. Create `server/.env` with `MONGO_URI`, `JWT_SECRET`, `JWT_EXPIRE`
+3. `npm run seed` or visit `http://localhost:5000/api/seed`
 
 ## Seed Credentials
 
@@ -34,7 +36,7 @@
 
 ## Notes
 
-- Client CORS allows `localhost:5173`, `localhost:3000`, and production domains
-- Static uploads served from `server/uploads` at `/uploads`
-- Server uses nodemon for auto-reload on changes
-- Client uses ES modules (`"type": "module"`), server uses CommonJS
+- No test framework configured; no `npm test` command exists
+- Server CORS allows: `localhost:5173`, `localhost:3000`, `neshedu.com`, `nesh-edu.onrender.com`
+- Static uploads served from `server/uploads` at `/uploads` endpoint
+- Client lint from `client/` dir; server has no lint config
